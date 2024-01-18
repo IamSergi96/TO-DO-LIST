@@ -1,0 +1,28 @@
+<!-- lista tareas -->
+<div class="div1">
+  <ul class="list">
+    @for(tarea of tasks; track tarea.task){
+    <li class="list-task">
+      <h2>Tarea: {{ tarea.task }}</h2>
+      <p>{{ tarea.isDone == true ? "Hecha" : "Por hacer" }}</p>
+      <p>Prioridad = {{ tarea.priority }}</p>
+      <button (click)="deleteOne(tarea)" class="deleteOne">
+        Eliminar tarea
+      </button>
+    </li>
+    }
+  </ul>
+  <!-- botones -->
+  <button (click)="prioritySort()" class="prioritySort">
+    Ordenar por Prioridad
+  </button>
+  <button (click)="deleteLast()" class="deleteLast">
+    Eliminar última tarea
+  </button>
+  <!-- Añadir tarea nueva -->
+  <div class="div2">
+    <input type="text" id="newTaskInput" [(ngModel)]="newTaskName" placeholder="Nombre de la tarea"/>
+    <input type="number" id="newTaskPriority" [(ngModel)]="newTaskPriority" placeholder="Número de prioridad"/>
+    <button (click)="addNewTask()" class="newTaskBtn">Añadir</button>
+  </div>
+</div>
